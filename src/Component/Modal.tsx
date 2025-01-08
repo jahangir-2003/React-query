@@ -53,7 +53,7 @@ export const AddProduct: React.FC<AddProductProps> = ({
           <Input
             type="number"
             placeholder="discount"
-            onChange={(e) =>
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setNewProduct({ ...newProduct, discount: e.target.value })
             }
             value={newProduct.discount}
@@ -61,17 +61,17 @@ export const AddProduct: React.FC<AddProductProps> = ({
           <Input
             type="text"
             placeholder="brand"
-            onChange={(e) =>
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setNewProduct({ ...newProduct, brand: e.target.value })
             }
             value={newProduct.brand}
           />
 
           <select
-            id="category"
+            id={newProduct.category}
             title="select category"
             value={newProduct.category}
-            onChange={(e) =>
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setNewProduct({ ...newProduct, category: e.target.value })
             }
             className="border-2 p-2 rounded-md border-slate-400"
@@ -79,7 +79,7 @@ export const AddProduct: React.FC<AddProductProps> = ({
             <option value="" disabled>
               Select a Category
             </option>
-            {category.map((cat, index) => (
+            {category.map((cat: string, index: number) => (
               <option key={index} value={cat}>
                 {cat}
               </option>
@@ -89,7 +89,7 @@ export const AddProduct: React.FC<AddProductProps> = ({
           <Input
             type="text"
             placeholder="model"
-            onChange={(e) =>
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setNewProduct({ ...newProduct, model: e.target.value })
             }
             value={newProduct.model}
@@ -98,7 +98,7 @@ export const AddProduct: React.FC<AddProductProps> = ({
         <textarea
           type="text"
           value={newProduct.description || ""}
-          onChange={(e) =>
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setNewProduct({ ...newProduct, description: e.target.value })
           }
           placeholder="Product Description"
