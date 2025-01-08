@@ -11,14 +11,13 @@ const SingleProduct = () => {
   const { data, isError, isLoading, error } = useQuery({
     queryKey: ["single-product", id],
     queryFn: () => fetchProductById(id),
+    enabled: !!id,
   });
 
-  // Handle loading state
   if (isLoading) {
     return <div>Loading...</div>;
   }
 
-  // Handle error state
   if (isError) {
     return (
       <div>
@@ -27,7 +26,6 @@ const SingleProduct = () => {
     );
   }
 
-  // Ensure that `data` is available before rendering
   if (!data) {
     return <div>No product found.</div>;
   }
@@ -68,13 +66,12 @@ const SingleProduct = () => {
               {data?.description}
             </span>
           </h2>
-          {/* <Rating /> */}
           <div className="flex flex-row gap-5 md:mt-5">
             <button className="w-10 h-10 bg-blue-800 items-center justify-center flex rounded-sm text-white">
-              <BiCartAdd size={25} />
+              {<BiCartAdd size={25} />}
             </button>
             <button className="w-10 h-10 bg-blue-800 items-center justify-center flex rounded-sm text-white">
-              <BiHeart size={25} />
+              {<BiHeart size={25} />}
             </button>
           </div>
         </div>
